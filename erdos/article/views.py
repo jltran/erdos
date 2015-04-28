@@ -1,16 +1,13 @@
 from django.shortcuts import render
-
-#TODO: Clean up views
+from article.models import Article
 #Rango Stuff
 from django.http import HttpResponse
-def index(request):
-    # Construct a dictionary to pass to the template engine as its context.
-    # Note the key boldmessage is the same as {{ boldmessage }} in the template!
-    context_dict = {'boldmessage': "I am bold font from the context"}
+#TODO: Clean up views
 
-    # Return a rendered response to send to the client.
-    # We make use of the shortcut function to make our lives easier.
-    # Note that the first parameter is the template we wish to use.
+
+def index(request):
+    article_list = Article.objects.order_by('-date')[:5]
+    context_dict = {'articles': article_list}
 
     return render(request, 'article/index.html', context_dict)
 

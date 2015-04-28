@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 class Article(models.Model):
     title = models.CharField(max_length=255, unique=True)
     author = models.OneToOneField(User)
-    url = models.URLField()
+    date = models.DateTimeField(auto_now_add=True)
+    text = models.TextField(default="Enter text here")
     active = models.BooleanField(default=True)
     decision = models.BooleanField()
     
@@ -14,9 +15,9 @@ class Article(models.Model):
 class Review(models.Model):
     reviewer = models.ForeignKey(User)
     article = models.ForeignKey(Article)
-    text = models.TextField()
-    url = models.URLField()
+    date = models.DateTimeField(auto_now_add=True)
+    text = models.TextField(default="Enter text here")
     decision = models.BooleanField()
     
     def __unicode__(self):
-        return self.reviewer
+        return self.text

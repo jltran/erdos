@@ -9,7 +9,8 @@ Minimum Marketing Features
 Tasks **
 Initialization *
 x Set-up Django
-- Create Initial Models and Views
+x Initialize Users
+x Create Initial Models and Views
 - Upload to Heroku
 
 Article Dashboard *
