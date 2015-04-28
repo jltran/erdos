@@ -1,0 +1,23 @@
+Minimum Marketing Features
+* Article Dashboard
+- Add/Edit/Review Articles
+- Article management by Editor
+- User Authentication
+- Article Summary (Author/Editor)
+- Front Splash
+
+Tasks **
+Initialization *
+x Set-up Django
+- Create Initial Models and Views
+- Upload to Heroku
+
+Article Dashboard *
+- Set up simple interface to upload article data
+- Display data on dashboard
+
+Front Splash *
+- Grab backdrop from http://subtlepatterns.com/
+
+Other Misc.
+- Set up WhiteNoise to serve static assets

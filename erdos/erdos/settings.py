@@ -14,7 +14,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'article'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'erdos.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_PATH],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,7 +68,7 @@ TEMPLATES = [
         },
     },
 ]
-
+                             
 WSGI_APPLICATION = 'erdos.wsgi.application'
 
 
@@ -99,4 +100,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+STATIC_PATH = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    STATIC_PATH,
+)
