@@ -37,7 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'article'
+    'article',
+    'storages'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -110,7 +111,6 @@ STATICFILES_DIRS = (
 )
 
 MEDIA_PATH = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
 MEDIAFILES_DIRS = (
     MEDIA_PATH,
 )
@@ -123,9 +123,23 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
 STATIC_ROOT = 'staticfiles'
-MEDIA_ROOT = 'mediafiles'
 
 DEBUG = False
+
+#S3 Connect
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_STORAGE_BUCKET_NAME  = 'erdosfiles'
+AWS_ACCESS_KEY_ID = 'AKIAIPEZRP5PCKJJCVEQ'
+AWS_SECRET_ACCESS_KEY = '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'
+
+AWS_S3_URL_PROTOCOL = 'http'
+S3_URL = 's3.amazonaws.com/%s' %AWS_STORAGE_BUCKET_NAME
+AWS_S3_CUSTOM_DOMAIN = S3_URL
+
+MEDIA_URL = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME + '/'
+MEDIA_ROOT = '/media/'
+
+
 
 try:
     from .local_settings import *

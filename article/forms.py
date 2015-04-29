@@ -8,7 +8,7 @@ class ArticleForm(forms.ModelForm):
     active = forms.NullBooleanSelect()
     decision = forms.NullBooleanSelect()
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
-    file = forms.FileField
+    file = forms.FileField()
     
     class Meta:
         model = Article

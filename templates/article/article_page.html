@@ -8,6 +8,7 @@
     <body>
         <h1>{{ article_title }}</h1>
             {% if article %}
+                <embed height="100%" width="100%"  name="plugin" src="{{article.get_file}}"  type="application/pdf">
             {% if reviews %}
             <ul>
                 {% for review in reviews %}

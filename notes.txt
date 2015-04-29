@@ -36,3 +36,4 @@ Other Misc.
 - Ensure responsiveness
 - Separate registration and login from Article
 - Update registration to confirm password prior to User creation
+- Make text non-mandatory when uploading document
