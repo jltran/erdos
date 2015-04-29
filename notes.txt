@@ -2,7 +2,7 @@ Minimum Marketing Features
 * Article Dashboard
 - Add/Edit/Review Articles
 - Article management by Editor
-* User Authentication
+x User Authentication
 - Article Summary (Author/Editor)
 - Front Splash
 
@@ -20,6 +20,7 @@ x Create page displaying all reviews of an article
 Detour: User Authentication *
 x Create registration form (note created on /article/register but did not want to create another app &/ model...)
 x Create login form 
+x Set up logic to show register/login if logged out and create/logout if logged in
 
 Article Upload *
 - Set up interface to upload article data

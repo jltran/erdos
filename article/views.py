@@ -43,11 +43,12 @@ def add_article(request):
     #Handles case GET and POST
     if request.method == 'POST':
         form = ArticleForm(request.POST)
-        form.date = datetime.now()
-        #form.author = User
         
         if form.is_valid():
-            form.save(commit=True)
+            obj = form.save(commit=False)
+            obj.author =  request.user
+            obj.date = datetime.now()
+            obj.save()
             return index(request)
         else:
             print form.errors

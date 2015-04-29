@@ -5,7 +5,7 @@ from django.template.defaultfilters import slugify
 class Article(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255, unique=True)
-    author = models.OneToOneField(User)
+    author = models.ForeignKey(User)
     date = models.DateTimeField(auto_now_add=True)
     text = models.TextField(default="Enter text here")
     active = models.BooleanField(default=True)
