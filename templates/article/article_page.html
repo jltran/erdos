@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>{{article_title}}</title>
+    </head>
+
+    <body>
+        <h1>{{ article_title }}</h1>
+            {% if article %}
+            {% if reviews %}
+            <ul>
+                {% for review in reviews %}
+                <li><a href="">{{ review.text }}</a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <strong>No reviews currently in article.</strong>
+            {% endif %}
+        {% else %}
+            The specified article {{ article_name }} does not exist!
+        {% endif %}
+    </body>
+
+</html>

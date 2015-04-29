@@ -2,25 +2,24 @@
 {% load staticfiles %}
 <html>
     <head>
-        <title>Rango</title>
+        <title>Dashboard</title>
     </head>
 
     <body>
-        <h1>Rango says...hello world!</h1>
-
+        <h1>Dashboard</h1>
         {% if articles %}
             <ul>
                 {% for article in articles %}
-                <li>{{ article.title }}</li>
+                <li><a href="{{article.slug}}">{{ article.title }}</a></li>
                 {% endfor %}
             </ul>
         {% else %}
             <strong>There are no articles present.</strong>
         {% endif %}
         <a href="/article/about/">About</a><br />
+        
         <!--
-        <img src="{% static "images/alpine.jpg" %}" alt="Alpine" />
-        -->
+        <img src="{% static "images/alpine.jpg" %}" alt="Alpine" /> -->
     </body>
 
 </html>

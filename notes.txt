@@ -2,7 +2,7 @@ Minimum Marketing Features
 * Article Dashboard
 - Add/Edit/Review Articles
 - Article management by Editor
-- User Authentication
+* User Authentication
 - Article Summary (Author/Editor)
 - Front Splash
 
@@ -11,11 +11,15 @@ Initialization *
 x Set-up Django
 x Initialize Users
 x Create Initial Models and Views
-- Upload to Heroku
+x Upload to Heroku
 
 Article Dashboard *
-- Set up simple interface to upload article data
-- Display data on dashboard
+x Display all data on dashboard
+x Create page displaying all reviews of an article
+
+Article Upload *
+- Set up interface to upload article data
+- Research feasibility of uploading 
 
 Front Splash *
 - Grab backdrop from http://subtlepatterns.com/
