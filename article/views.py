@@ -42,14 +42,16 @@ def article_page(request, article_name_slug):
 def add_article(request):
     #Handles case GET and POST
     if request.method == 'POST':
-        form = ArticleForm(request.POST)
+        form = ArticleForm(request.POST, request.FILES)
         
         if form.is_valid():
             obj = form.save(commit=False)
             obj.author =  request.user
             obj.date = datetime.now()
+            if request.FILES:
+                obj.file = request.FILES['file']
             obj.save()
-            return index(request)
+            return HttpResponseRedirect('../' + obj.slug)
         else:
             print form.errors
     else:

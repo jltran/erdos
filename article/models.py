@@ -11,6 +11,7 @@ class Article(models.Model):
     active = models.BooleanField(default=True)
     decision = models.NullBooleanField(null=True)
     slug = models.SlugField(default='',unique = True)
+    file = models.FileField(upload_to='documents', blank=True)
     
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)

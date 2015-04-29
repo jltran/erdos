@@ -109,6 +109,12 @@ STATICFILES_DIRS = (
     STATIC_PATH,
 )
 
+MEDIA_PATH = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+MEDIAFILES_DIRS = (
+    MEDIA_PATH,
+)
+
 import dj_database_url
 DATABASES['default'] = dj_database_url.config()
 
@@ -117,6 +123,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
 STATIC_ROOT = 'staticfiles'
+MEDIA_ROOT = 'mediafiles'
 
 DEBUG = False
 

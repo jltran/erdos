@@ -23,8 +23,11 @@ x Create login form
 x Set up logic to show register/login if logged out and create/logout if logged in
 
 Article Upload *
-- Set up interface to upload article data
+x Set up interface to upload article data
 - Research feasibility of uploading pdf (?)
+
+Front End Set-Up
+- Abstract base template
 
 Front Splash *
 - Grab backdrop from http://subtlepatterns.com/
