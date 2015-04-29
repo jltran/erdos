@@ -6,9 +6,10 @@ from django.http import HttpResponse
 
 
 def index(request):
-    article_list = Article.objects.order_by('-date')[:5]
-    context_dict = {'articles': article_list}
-
+    #article_list = Article.objects.order_by('-date')[:5]
+    #context_dict = {'articles': article_list}
+    context_dict = {'articles': []}
+    
     return render(request, 'article/index.html', context_dict)
 
 def about(request):
