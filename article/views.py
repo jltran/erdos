@@ -1,7 +1,12 @@
 from django.shortcuts import render
 from article.models import Article, Review
-#Rango Stuff
-from django.http import HttpResponse
+from article.forms import ArticleForm, UserForm
+from django.contrib.auth.models import User
+from datetime import datetime
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 #TODO: Clean up views
 
 def index(request):
@@ -32,3 +37,73 @@ def article_page(request, article_name_slug):
         pass
         
     return render(request, 'article/article_page.html', context_dict)
+
+@login_required
+def add_article(request):
+    #Handles case GET and POST
+    if request.method == 'POST':
+        form = ArticleForm(request.POST)
+        form.date = datetime.now()
+        #form.author = User
+        
+        if form.is_valid():
+            form.save(commit=True)
+            return index(request)
+        else:
+            print form.errors
+    else:
+        form = ArticleForm()
+    
+    return render(request, 'article/add_article.html', {'form': form})
+
+def register(request):
+    registered = False
+    if request.method == 'POST':
+        user_form = UserForm(data=request.POST)
+        
+        if user_form.is_valid():
+            user = user_form.save()
+            
+            #Need to hash the password
+            user.set_password(user.password)
+            user.save()
+            registered = True
+        else:
+            print user_form.errors
+    else:
+        user_form = UserForm()
+    return render(request, 'article/register.html', {'user_form': user_form, 'registered': registered} )
+    
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        user = authenticate(username=username, password=password)
+        
+        if user:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect('/article/')
+            else:
+                return HttpResponse("Your account is disabled.")
+        else:
+            print "Invalid login details: {0}, {1}".format(username, password)
+            return HttpResponse("Invalid login details supplied.")
+    else:
+        return render(request, 'article/login.html', {})
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect('/article/')
+    
+    
+    
+    
+#TODO: Temp view to save authentication logic for later
+def some_view(request):
+    if not request.user.is_authenticated():
+        return HttpResponse("You are logged in.")
+    else:
+        return HttpResponse("You are not logged in.")

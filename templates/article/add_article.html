@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rango</title>
+    </head>
+
+    <body>
+        <h1>Add an Article</h1>
+
+        <form id="article_form" method="post" action="/article/add_article/">
+
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{form.errors}}
+                {{ hidden }}
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}
+                <br>
+            {% endfor %}
+
+            <input type="submit" name="submit" value="Create Article" />
+        </form>
+    </body>
+
+</html>
