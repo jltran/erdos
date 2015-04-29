@@ -3,9 +3,6 @@ from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from django.core.files.storage import default_storage as storage
 from django.conf import settings
-#For pdf download
-from reportlab.pdfgen import canvas
-from django.http import HttpResponse
 
 class Article(models.Model):
     id = models.AutoField(primary_key=True)
