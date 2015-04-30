@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+  <div class="carousel">
+    <div class="row">
+      <div class="col-6">
+        <img class="resize" src="{% static 'images/dashboard.png' %}">
+          
+      </div>
+      <div class="col-6 ">
+        <div class="vert">
+          <h1 class="carousel-copy">Erdos</h1>
+          <h4 class="playfair carousel-copy">A comprehensive publication manage system that enables you to share your papers with your editors and peers. Our easy-to-use interface makes the process of publication more pleasurable. Publish prolifically! </h4>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <div class="features">
+    <div class="row mini-margin">
+      <div class="col-4 feature-container">
+        <i class="fa fa-folder-open icon-center" style="color:white;font-size:72px;"></i>
+        <div class="feature-description">
+          <h1 class="text-center">Organize</h1>
+          <br>
+          <p class="text-center">Keep your documents organized and managed by our reliable software!</p>
+        </div>
+      </div>
+      <div class="col-4 feature-container">
+        <i class="fa fa-paperclip icon-center" style="color:white;font-size:72px;"></i>
+        <div class="feature-description">
+          <h1 class="text-center">Easy Upload</h1>
+          <br>
+          <p class="text-center">Upload your pdf files with ease to enable your editors and peer reviewers easy access.</p>
+        </div>
+        <a href="{% url 'register' %}" class="button danger large register-today">Register Today</a>
+      </div>
+      <div class="col-4 feature-container">
+        <i class="fa fa-support icon-center" style="color:white;font-size:72px;"></i>
+        <div class="feature-description">
+          <h1 class="text-center">Support</h1>
+          <br>
+          <p class="text-center">Technical support from our amazing staff. If you have any issues, let us know.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+      
+      
+{% endblock %}

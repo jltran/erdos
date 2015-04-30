@@ -9,6 +9,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 #TODO: Clean up views
 
+def home(request):
+    return render(request, 'home.html')
+
+@login_required
 def index(request):
     article_list = Article.objects.order_by('-date')[:6]
     all_articles = Article.objects.all()
@@ -100,7 +104,7 @@ def reviews(request, pk):
     results = '[{"name":"accept", "reviews":' +  str(results_yes) + '}, {"name":"reject", "reviews":' + str(results_no) + '}, {"name":"awaiting review", "reviews":' + str(results_awaiting) + '}]'
     
     return render(request, 'article/reviews.html', {'article': article, 'reviews': reviews, 'results': results})
-
+  
 def register(request):
     registered = False
     if request.method == 'POST':
@@ -141,30 +145,4 @@ def user_login(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect('/article/')
-    
-#@login_required
-#def add_review(request):
-#    if request.method == 'POST':
-#        form = ReviewForm(request.POST)
-#        
-#        if form.is_valid():
-#            obj = form.save(commit=False)
-#            obj.reviewer =  request.user
-#            obj.date = datetime.now()
-#            obj.save()
-#            return HttpResponseRedirect('/article')
-#        else:
-#            print form.errors
-#    else:
-#        form = ReviewForm()
-#    
-#    return render(request, 'article/add_review.html', {'form': form})
-    
-    
-#TODO: Temp view to save authentication logic for later
-#def some_view(request):
-#    if not request.user.is_authenticated():
-#        return HttpResponse("You are logged in.")
-#    else:
-#        return HttpResponse("You are not logged in.")
+    return HttpResponseRedirect('/')

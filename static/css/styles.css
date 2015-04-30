@@ -17,12 +17,107 @@ body {
   background: url('../images/debut_light.png');
 }
 
+/*home*/
+.carousel {
+  width: 110%;
+  height: 450px;
+  margin: -2.5% -5% 0 -5%;
+  background: url('../images/swirl_pattern.png');
+  border-bottom: solid #444 1px;
+}
+
+img.resize {
+  width: 650px;
+  height: auto;
+  margin-left: 75px;
+  margin-top: 15px;
+  border: solid #444 1px;
+}
+
+.vert:before{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #FFF;
+  opacity: 0.3;
+}
+
+.vert {
+  position: relative;
+  top: 100px;
+  z-index: 10;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding: 20px 40px 20px 40px;
+}
+
+.carousel-copy {
+  opacity: 1;
+  color: #444;
+}
+
+.mini-margin {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.features {
+  background: #6d6e71;
+  height: 450px;
+  margin: 0% -5% 0 -5%;
+  width: 110%;
+  color: white;
+}
+
+.feature-container {
+  position: relative;
+  height: 450px;
+}
+
+.icon-center {
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  transform: translate(-50%, -50%);
+}
+
+.feature-description {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.feature-description h1 {
+  color: white;
+  font-weight: 300;
+}
+
+.register-today {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translate(-50%, -0%);
+}
+
 /*login*/
 .login-copy-div {
   padding: 2.5% 5% 2.5% 5%;
 }
 .playfair {
   font-family: 'Playfair Display', serif;
+  z-index: 99;
+}
+
+img.resize-register {
+  width: 650px;
+  height: auto;
+  margin-top: 15px;
+  border: solid #444 1px;
 }
 
 .login-copy {
@@ -70,6 +165,7 @@ body {
 .reviews {
   margin-left: 3%;
 }
+
 #chartContainer {
   margin-top: 10%;
 }

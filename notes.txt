@@ -40,7 +40,9 @@ x Dashboard
 
 
 Front Splash *
-- Grab backdrop from http://subtlepatterns.com/
+x Grab backdrop from http://subtlepatterns.com/
+x Set up hero
+
 
 Other Misc.
 - Improve responsive design (does not work very well for mobile/small screens)

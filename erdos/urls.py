@@ -8,6 +8,7 @@ urlpatterns = [
     # url(r'^$', 'erdos.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
+    url(r'^$', 'article.views.home', name='home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^article/', include('article.urls')),
 ]
