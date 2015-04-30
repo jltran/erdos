@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Add an Article</title>
-    </head>
+{% extends 'base.html' %}
 
-    <body>
+{% block title %}Add an Article{% endblock %}
+
+{% block body_block %}
+  <div class="row">
+      <div class="col-8">
         <h1>Add an Article</h1>
-
-        <form id="article_form" method="post" action="/article/add_article/" enctype="multipart/form-data">
-
-            {% csrf_token %}
+         <form id="article_form" method="post" action="/article/add_article/" enctype="multipart/form-data">
+          {% csrf_token %}
             {% for hidden in form.hidden_fields %}
                 {{form.errors}}
                 {{ hidden }}
@@ -21,9 +19,8 @@
                 {{ field }}
                 <br>
             {% endfor %}
-
-            <input type="submit" name="submit" value="Create Article" />
-        </form>
-    </body>
-
-</html>
+          <input type="submit" name="submit" value="Create Article" />
+        </form>  
+      </div>
+    </div>       
+{% endblock %}

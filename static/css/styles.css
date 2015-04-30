@@ -1,0 +1,57 @@
+/*base*/
+.page-margins {
+  margin: 2.5% 5% -2.5% 5%;
+  height: 100vh;
+}
+
+.page-body {
+  min-height: 100vh !important;
+}
+
+body {
+  background: url('../images/concrete_seamless.png');
+}
+
+/*login*/
+.login-copy-div {
+  padding: 2.5% 5% 2.5% 5%;
+}
+.playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.login-copy {
+  padding: 2.5% 0% 2.5% 5%;
+  line-height: 25px; 
+}
+
+.helptext {
+  color: #444;
+  font-size: 75%;
+}
+
+/* article page */
+.article-pdf {
+  margin: -3.3% 0% 0% -5.5%;
+  height: 100%;
+}
+
+.article-page {
+  height: 100%;
+}
+
+.article-pdf embed {
+  height: 100vh;
+}
+
+.article-sidebar {
+  margin-left: -0.5%;
+  margin-top: -3.3%;
+  padding-right: 0;
+}
+
+.review-nav {
+  right: 0px;
+  position: absolute;
+  top: 75%;
+}

@@ -81,6 +81,7 @@ def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        print username
         
         user = authenticate(username=username, password=password)
         
@@ -101,12 +102,28 @@ def user_logout(request):
     logout(request)
     return HttpResponseRedirect('/article/')
     
-    
+#@login_required
+#def add_review(request):
+#    if request.method == 'POST':
+#        form = ReviewForm(request.POST)
+#        
+#        if form.is_valid():
+#            obj = form.save(commit=False)
+#            obj.reviewer =  request.user
+#            obj.date = datetime.now()
+#            obj.save()
+#            return HttpResponseRedirect('/article')
+#        else:
+#            print form.errors
+#    else:
+#        form = ReviewForm()
+#    
+#    return render(request, 'article/add_review.html', {'form': form})
     
     
 #TODO: Temp view to save authentication logic for later
-def some_view(request):
-    if not request.user.is_authenticated():
-        return HttpResponse("You are logged in.")
-    else:
-        return HttpResponse("You are not logged in.")
+#def some_view(request):
+#    if not request.user.is_authenticated():
+#        return HttpResponse("You are logged in.")
+#    else:
+#        return HttpResponse("You are not logged in.")

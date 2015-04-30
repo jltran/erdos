@@ -1,26 +1,54 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
+
+{% block title %}{{article_title}}{% endblock %}
+
+{% block body_block %}
+  <div class="row article-page">
+    {% if article %}
+      {% if article.file %}
+        <div class="article-pdf col-9">
+          <embed width="100%"  name="plugin" src="{{article.get_file}}"  type="application/pdf">
+        </div>
+      {% endif %}   
+    {% else %}
+        The specified article {{ article_name }} does not exist!
+    {% endif %}
+      <div class="col-3 article-sidebar">
+        <table class="striped table-sidebar">
+          <tbody>
+           <tr>
+             <td>Title</td>
+             <td>{{article.title}}</td>
+           </tr>
+           <tr>
+             <td>Author</td>
+             <td>{{article.author.first_name}} {{article.author.last_name}}</td>
+           </tr>
+           <tr>
+             <td>Author's Email</td>
+             <td>{{article.author.email}}</td>
+           </tr>
+           <tr>
+             <td>Date Submitted</td>
+             <td>{{article.date}}</td>
+           </tr>
+           <tr>
+             <td>Published</td>
+             <td>{{article.decision}}</td>
+           </tr>
+           <tr>
+             <td>Description</td>
+             <td>{{article.text}}</td>
+           </tr>
+         </tbody>
+        </table>
+      </div>
+      <div class="review-nav">
+        <a href="#" class="button primary large">Details</a>
+        <br>
+        <a href="#" class="button primary large">Write Review</a>
+      </div>
     
-    <head>
-        <title>{{article_title}}</title>
-    </head>
+</div>
+{% endblock %}
 
-    <body>
-        <h1>{{ article_title }}</h1>
-            {% if article %}
-                <embed height="100%" width="100%"  name="plugin" src="{{article.get_file}}"  type="application/pdf">
-            {% if reviews %}
-            <ul>
-                {% for review in reviews %}
-                <li><a href="">{{ review.text }}</a></li>
-                {% endfor %}
-            </ul>
-            {% else %}
-                <strong>No reviews currently in article.</strong>
-            {% endif %}
-        {% else %}
-            The specified article {{ article_name }} does not exist!
-        {% endif %}
-    </body>
-
-</html>

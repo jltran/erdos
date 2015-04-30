@@ -1,0 +1,60 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <meta name="author" content="Jason Tran">
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <title>Erdos - {% block title %}Publish Prolifically{% endblock %}</title>
+    
+    <link rel="stylesheet" href="{% static "css/normalize.css" %}">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static "css/furatto.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+  </head>
+
+  <body>
+    <nav class="navigation-bar">
+      <ul class="brand-section">
+        <li class="brand-name">
+          {% if user.is_authenticated %}
+            <a href="/article" class="menu-trigger" id="trigger">Erdos</a>
+          {% else %}
+            <a href="/" class="menu-trigger" id="trigger">Erdos</a>
+          {% endif %}
+        </li>
+        <li class="menu-toggle">
+          <a href="#">Menu</a>
+        </li>
+      </ul>
+      <ul class="pull-right">
+        {% if user.is_authenticated %}
+          <li class="divider"></li>
+          <li><a href="/article/add_article/">Create</a></li>
+          <li class="divider"></li>
+          <li><a href="/article/logout/">Logout</a></li>
+        {% else %}
+          <li class="divider"></li>
+          <li><a href="/article/login/">Login</a></li>
+          <li class="divider"></li>
+          <li><a href="/article/register/" class="button three-d">Register Here</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    
+    <div class="page-body">
+      <div class="page-margins">
+        {% block body_block %}{% endblock %}
+      </div>
+    </div>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="{% static "js/furatto.min.js" %}"></script>
+
+  </body>
+</html>
+

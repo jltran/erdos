@@ -1,22 +1,32 @@
-<!DOCTYPE html>
-<html>
-    <head>
+{% extends 'base.html' %}
+{% load staticfiles %}
 
-        <title>Login</title>
-    </head>
+{% block title %}Login{% endblock %}
 
-    <body>
-        <h1>Login</h1>
+{% block body_block %}
+  <div class="row">
+    <div class="col-6">
+      <h1>Login</h1>
+      <form id="login_form" method="post" action="/article/login/">
+        {% csrf_token %}
+        {{ login_form.as_p }}
+        <label for="user">Username</label>
+           <input type="text" name="username" id="user" value="" placeholder="Enter username here" />
+           <br />
+        <label for="pass">Password</label>
+           <input type="password" name="password" id="pass" value="" placeholder="Enter password here" />
+           <br />
+        <input type="submit" value="Log-In" />
+      </form>  
+    </div>
+    
+    <div class="col-6 login-copy-div">
+      <h1 class="playfair text-right">Publish Prolifically</h2>
+      <h5 class="text-right login-copy">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos placeat natus fuga recusandae delectus atque quis itaque at explicabo maxime, repellat voluptatem officiis molestias rerum nisi obcaecati, eveniet? Perferendis totam, est esse id tempora accusamus maxime illo provident sit cupiditate aliquam cumque, quod numquam libero saepe! Quis quidem repellat libero!
+      </h5>
+    </div>
+    
+  </div>
 
-        <form id="login_form" method="post" action="/article/login/">
-            {% csrf_token %}
-            Username: <input type="text" name="username" value="" size="50" />
-            <br />
-            Password: <input type="password" name="password" value="" size="50" />
-            <br />
-
-            <input type="submit" value="submit" />
-        </form>
-
-    </body>
-</html>
+{% endblock %}

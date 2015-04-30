@@ -24,10 +24,19 @@ x Set up logic to show register/login if logged out and create/logout if logged 
 
 Article Upload *
 x Set up interface to upload article data
-- Research feasibility of uploading pdf (?)
+x Research feasibility of uploading pdf (?)
+x Add file upload to model
+x Connect media to Amazon S3
+x Display pdf in article_page
 
-Front End Set-Up
-- Abstract base template
+Front End Set-Up *
+x Create a base template
+x Extend base template from all pages
+x Login and Register
+x Add Article
+x View Article
+- Review Article
+
 
 Front Splash *
 - Grab backdrop from http://subtlepatterns.com/
@@ -37,3 +46,4 @@ Other Misc.
 - Separate registration and login from Article
 - Update registration to confirm password prior to User creation
 - Make text non-mandatory when uploading document
+- Error cases and messages for log-in

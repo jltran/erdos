@@ -1,0 +1,9 @@
+{% if reviews %}
+      <ul>
+          {% for review in reviews %}
+          <li><a href="">{{ review.text }}</a></li>
+          {% endfor %}
+      </ul>
+      {% else %}
+          <strong>No reviews currently in article.</strong>
+      {% endif %}

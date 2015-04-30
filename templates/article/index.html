@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-{% load staticfiles %}
-<html>
-    <head>
-        <title>Dashboard</title>
-    </head>
+{% extends 'base.html' %}
 
-    <body>
+{% block title %}Dashboard{% endblock %}
+
+{% block body_block %}
         <h1>Dashboard</h1>
-        
+
         {% if user.is_authenticated %}
         <h4>hello {{ user.username }}!</h4>
         {% else %}
@@ -23,20 +20,4 @@
         {% else %}
             <strong>There are no articles present.</strong>
         {% endif %}
-        
-        {% if user.is_authenticated %}
-        <a href="/article/add_article/">Create</a><br />
-        <a href="/article/logout/">Logout</a><br />
-        {% else %}
-        <a href="/article/register/">Register Here</a><br />
-        <a href="/article/login/">Login</a><br />
-        {% endif %}
-        
-        <a href="/article/about/">About</a><br />
-        
-        
-        <!--
-        <img src="{% static "images/alpine.jpg" %}" alt="Alpine" /> -->
-    </body>
-
-</html>
+{% endblock %}
