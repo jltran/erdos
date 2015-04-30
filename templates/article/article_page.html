@@ -50,10 +50,10 @@
       <div class="review-nav">
         <a href="#" class="button primary large">Details</a>
         <br>
-        {% if article.author != user %}
+        {% if article.author != user and has_reviewed == False %}
           <a href="{% url 'add_review' pk=article.pk %}" class="button primary large">Write Review</a>
           <br>
-        {% else %}
+        {% elif article.author == user %}
           <a href="#" class="button primary large">View Reviews</a>
         {% endif %}
       </div>

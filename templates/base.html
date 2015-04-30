@@ -8,6 +8,7 @@
     <meta name="author" content="Jason Tran">
     <link href='http://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=GFS+Neohellenic:400&subset=greek&text=ε' rel='stylesheet' type='text/css'>
 
     <title>Erdos - {% block title %}Publish Prolifically{% endblock %}</title>
     
@@ -22,9 +23,9 @@
       <ul class="brand-section">
         <li class="brand-name">
           {% if user.is_authenticated %}
-            <a href="/article" class="menu-trigger" id="trigger">Erdos</a>
+            <a href="/article" class="menu-trigger erdos-logo" id="trigger">ε</a>
           {% else %}
-            <a href="/" class="menu-trigger" id="trigger">Erdos</a>
+            <a href="/" class="menu-trigger erdos-logo" id="trigger">ε</a>
           {% endif %}
         </li>
         <li class="menu-toggle">

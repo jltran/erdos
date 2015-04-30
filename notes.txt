@@ -35,7 +35,7 @@ x Extend base template from all pages
 x Login and Register
 x Add Article
 x View Article
-- Review Article
+x Review Article
 x Dashboard
 
 
@@ -46,7 +46,7 @@ Other Misc.
 - Improve responsive design (does not work very well for mobile/small screens)
 - Separate registration and login from Article model
 - Update registration to confirm password prior to User creation
-- Retrieve Passwords
+- Retrieve aws passwords from settings
 - Get rid of margin at the bottom of every page
 - Create a settings feature
 - Ability to edit submitted article information

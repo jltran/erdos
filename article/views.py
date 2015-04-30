@@ -24,6 +24,7 @@ def index(request):
 def about(request):
     return render(request, 'article/about.html')
 
+@login_required
 def article_page(request, article_name_slug):
     context_dict = {}
     
@@ -33,7 +34,13 @@ def article_page(request, article_name_slug):
         
         #Get all attached reviews
         reviews = Review.objects.filter(article=article)
+        has_reviewed = False
+        for review in reviews:
+            if review.reviewer == request.user:
+                has_reviewed = True
+            
         context_dict['reviews'] = reviews
+        context_dict['has_reviewed'] = has_reviewed
         
         #Attach article object as well - to verify that article exists
         context_dict['article'] = article

@@ -1,4 +1,9 @@
 /*base*/
+.erdos-logo {
+  font-family: 'GFS Neohellenic', sans-serif;
+  font-size: 2rem;
+}
+
 .page-margins {
   margin: 2.5% 5% -2.5% 5%;
   height: 100vh;
