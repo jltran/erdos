@@ -34,7 +34,11 @@
            </tr>
            <tr>
              <td>Published</td>
-             <td>{{article.decision}}</td>
+             {% if article.decision == None %}
+               <td>Awaiting Review</td>
+             {% else %}
+               <td>{{article.decision}}</td>
+             {% endif %}
            </tr>
            <tr>
              <td>Description</td>
@@ -46,7 +50,12 @@
       <div class="review-nav">
         <a href="#" class="button primary large">Details</a>
         <br>
-        <a href="#" class="button primary large">Write Review</a>
+        {% if article.author != user %}
+          <a href="{% url 'add_review' pk=article.pk %}" class="button primary large">Write Review</a>
+          <br>
+        {% else %}
+          <a href="#" class="button primary large">View Reviews</a>
+        {% endif %}
       </div>
     
 </div>

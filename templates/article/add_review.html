@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Add an Review{% endblock %}
+
+{% block body_block %}
+  <div class="row article-page">
+    {% if article %}
+      {% if article.file %}
+        <div class="article-pdf col-9">
+          <embed width="100%"  name="plugin" src="{{article.get_file}}"  type="application/pdf">
+        </div>
+      {% endif %}   
+    {% else %}
+        The specified article {{ article_name }} does not exist!
+    {% endif %}
+    
+    <div class="col-3 review-sidebar">
+      <h1>Add an Review</h1>
+       <form id="review_form" method="post" action="/article/review/{{article.pk}}">
+        {% csrf_token %}
+          {% for hidden in form.hidden_fields %}
+              {{form.errors}}
+              {{ hidden }}
+          {% endfor %}
+
+          {% for field in form.visible_fields %}
+              {{ field.errors }}
+              {{ field.help_text }}
+              {{ field }}
+              <br>
+          {% endfor %}
+        <input type="submit" name="submit" value="Create Review" />
+      </form>  
+    </div>
+  </div>
+  
+  <div class="review-nav">
+    <a href="#" class="button primary large">Details</a>
+    <br>
+  </div>
+                
+{% endblock %}

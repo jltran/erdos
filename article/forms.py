@@ -13,8 +13,8 @@ class ArticleForm(forms.ModelForm):
         exclude = ('author','date','active','decision')
         
 class ReviewForm(forms.ModelForm):
-    text = forms.CharField(widget = forms.Textarea)
-    decision = forms.NullBooleanSelect()
+    text = forms.CharField(widget = forms.Textarea, help_text="Please provide some feedback.")
+    decision = forms.BooleanField(widget = forms.NullBooleanSelect, help_text="Do you recommend this paper?", required=False)
     
     class Meta:
         model = Review
@@ -25,4 +25,4 @@ class UserForm(forms.ModelForm):
     
     class Meta:
         model = User
-        fields = ('username', 'email', 'password')
+        fields = ('username', 'first_name', 'last_name', 'email', 'password')

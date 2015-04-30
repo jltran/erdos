@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from article.models import Article, Review
-from article.forms import ArticleForm, UserForm
+from article.forms import ArticleForm, UserForm, ReviewForm
 from django.contrib.auth.models import User
 from datetime import datetime
 from django.contrib.auth import authenticate, login
@@ -10,9 +10,15 @@ from django.contrib.auth import logout
 #TODO: Clean up views
 
 def index(request):
-    article_list = Article.objects.order_by('-date')[:5]
-    context_dict = {'articles': article_list}
-        
+    article_list = Article.objects.order_by('-date')[:6]
+    all_articles = Article.objects.all()
+    review_list = Review.objects.all()
+    context_dict = {
+                      'recent_articles': article_list, 
+                      'reviews': review_list,
+                      'articles': all_articles
+                   }
+    
     return render(request, 'article/index.html', context_dict)
 
 def about(request):
@@ -58,6 +64,23 @@ def add_article(request):
         form = ArticleForm()
     
     return render(request, 'article/add_article.html', {'form': form})
+
+@login_required
+def add_review(request, pk):
+    article = Article.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.reviewer = request.user
+            obj.date = datetime.now()
+            obj.article = article
+            obj.save()
+            return HttpResponseRedirect('../') #TODO: Create correct redirect
+    else:
+        form = ReviewForm()
+    return render(request, 'article/add_review.html', {'form': form, 'article':article})
 
 def register(request):
     registered = False

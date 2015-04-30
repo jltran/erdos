@@ -34,7 +34,9 @@
       <ul class="pull-right">
         {% if user.is_authenticated %}
           <li class="divider"></li>
-          <li><a href="/article/add_article/">Create</a></li>
+          <li><a href="#">hello, {{user.username}}</a></li>
+          <li class="divider"></li>
+          <li><a href="/article/add_article/">Upload</a></li>
           <li class="divider"></li>
           <li><a href="/article/logout/">Logout</a></li>
         {% else %}
@@ -51,9 +53,9 @@
         {% block body_block %}{% endblock %}
       </div>
     </div>
-
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script type="text/javascript" charset="utf-8" src="{% static "js/furatto.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/erdos.js" %}"></script>
 
   </body>
 </html>

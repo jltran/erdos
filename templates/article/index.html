@@ -1,23 +1,66 @@
 {% extends 'base.html' %}
-
+{% load staticfiles %}
 {% block title %}Dashboard{% endblock %}
 
 {% block body_block %}
-        <h1>Dashboard</h1>
-
-        {% if user.is_authenticated %}
-        <h4>hello {{ user.username }}!</h4>
-        {% else %}
-         <a href="/article/login/"><h4>Please login</h4></a>
-        {% endif %}
+  <h1>Dashboard</h1>
+  <div class="row">
+    <div class="col-9">
+      <h2 class="playfair">Recently Submitted Articles</h2>
+      {% if recent_articles %}
+        <div class="row">
+          {% for article in recent_articles %}
+            <div class="col-4">
+              <a href="{{article.slug}}">
+                <div class="article-box" style="background-image: url({% static article.random_image %}); background-size: cover; z-index: 0;">
+                  <div class="gradient">
+                    <h4>{{article.title|truncatechars:50}}</h4>   
+                  </div>       
+                </div>
+                </a>
+            </div>
+          {% endfor %}
+        </div>
+    </div>
+    <div class="col-3 my-articles">
+      <h2 class="playfair">My Articles</h2>
+        <h4 class="playfair">Under Review:</h4>
+          {% for article in articles %}
+            {% if article.author == user and article.active and article.decision == None %}
+              <h5><a href="{{article.slug}}">{{article.title}}</a></h5>
+            {% endif %}
+          {% endfor %}
+        <br>
+        <h4 class="playfair">Published:</h4>
+          {% for article in articles %}
+            {% if article.author == user and article.decision == True %}
+              <h5><a href="{{article.slug}}">{{article.title}}</a></h5>
+            {% endif %}
+          {% endfor %}
+        <br>
+        <h3 class="playfair">Articles I Have Reviewed:</h3>
+          {% for review in reviews|slice:":5" %}
+            {% if review.reviewer == user %}
+              <h5><a href="{{review.article.slug}}">{{review.article.title}}</a></h5>
+            {% endif %}
+          {% endfor %}
+        <br>
         
-        {% if articles %}
-            <ul>
-                {% for article in articles %}
-                <li><a href="{{article.slug}}">{{ article.title }}</a></li>
-                {% endfor %}
-            </ul>
+    </div>
+  </div>
+
+           
+            
         {% else %}
             <strong>There are no articles present.</strong>
         {% endif %}
 {% endblock %}
+
+
+<!--
+<ul>
+                {% for article in articles %}
+                <li>{{ article.title }}/li>
+                {% endfor %}
+            </ul>
+            -->

@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from django.core.files.storage import default_storage as storage
 from django.conf import settings
+import os
+import random
 
 class Article(models.Model):
     id = models.AutoField(primary_key=True)
@@ -24,6 +26,13 @@ class Article(models.Model):
             return ''
         file_path = 'http://' + settings.MEDIA_URL + self.file.name
         return file_path
+    
+    def random_image(self):
+        path = os.path.join(settings.BASE_DIR, 'static') + '/images/random/'
+        filenames = [f for f in os.listdir(path)]
+        if '.DS_Store' in filenames: filenames.remove('.DS_Store')
+        pick = random.choice(filenames)
+        return 'images/random/' + pick
     
     def __unicode__(self):
         return self.title
