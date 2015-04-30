@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^login/$', views.user_login, name='login'),
     url(r'^logout/$', views.user_logout, name='logout'),
     url(r'^review/(?P<pk>\d+)$', views.add_review, name='add_review'),
+    url(r'^reviews/(?P<pk>\d+)$', views.reviews, name='reviews'),
     #This should be last because it tries to match everything not above
     #This is a bug if they try to upload an article called register, etc..
     url(r'^(?P<article_name_slug>[\w\-]+)/$', views.article_page, name='article_page'),

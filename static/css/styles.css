@@ -67,6 +67,13 @@ body {
   margin-left: 3%;
 }
 
+.reviews {
+  margin-left: 3%;
+}
+#chartContainer {
+  margin-top: 10%;
+}
+
 /* Dashboard */
 .article-box {
   border: 1px solid #888888;

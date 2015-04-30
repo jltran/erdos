@@ -54,7 +54,7 @@
           <a href="{% url 'add_review' pk=article.pk %}" class="button primary large">Write Review</a>
           <br>
         {% elif article.author == user %}
-          <a href="#" class="button primary large">View Reviews</a>
+          <a href="{% url 'reviews' pk=article.pk %}" class="button primary large">View Reviews</a>
         {% endif %}
       </div>
     

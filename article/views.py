@@ -89,6 +89,18 @@ def add_review(request, pk):
         form = ReviewForm()
     return render(request, 'article/add_review.html', {'form': form, 'article':article})
 
+@login_required
+def reviews(request, pk):
+    article = Article.objects.get(pk=pk)
+    reviews = Review.objects.filter(article=article)
+    
+    results_yes = sum([1 for review in reviews if review.decision == True])
+    results_no = sum([1 for review in reviews if review.decision == False])
+    results_awaiting = sum([1 for review in reviews if review.decision == None])
+    results = '[{"name":"accept", "reviews":' +  str(results_yes) + '}, {"name":"reject", "reviews":' + str(results_no) + '}, {"name":"awaiting review", "reviews":' + str(results_awaiting) + '}]'
+    
+    return render(request, 'article/reviews.html', {'article': article, 'reviews': reviews, 'results': results})
+
 def register(request):
     registered = False
     if request.method == 'POST':
@@ -111,7 +123,6 @@ def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        print username
         
         user = authenticate(username=username, password=password)
         
